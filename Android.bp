@@ -1,0 +1,5 @@
+subdirs = [
+    "a9_accessibility_service",
+    "a9_eink_daemon",
+    "sepolicy",
+]

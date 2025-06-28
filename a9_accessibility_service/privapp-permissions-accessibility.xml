@@ -1,0 +1,10 @@
+<!-- a9_accessibility_service/privapp-permissions-accessibility.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <privapp-permissions package="com.lmqr.ha9_comp_service">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.WRITE_SETTINGS"/>
+        <permission name="android.permission.SYSTEM_ALERT_WINDOW"/>
+        <!-- Add other privileged permissions as needed -->
+    </privapp-permissions>
+</permissions>

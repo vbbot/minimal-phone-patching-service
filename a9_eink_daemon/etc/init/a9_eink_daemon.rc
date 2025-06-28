@@ -1,0 +1,7 @@
+# a9_eink_daemon/etc/init/a9_eink_daemon.rc
+
+service a9_eink_server /system/bin/a9_eink_server
+    disabled
+
+on property:sys.boot_completed=1
+    start a9_eink_server

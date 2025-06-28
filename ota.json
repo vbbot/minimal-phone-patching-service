@@ -1,0 +1,11 @@
+{
+    "version": "2025-05-07 (Evolution X 10.5)",
+    "date": "1746642320",
+    "variants": [
+        {
+            "name": "evolution_arm64_bgN",
+            "size": "1938065976",
+            "url": "https://github.com/vbbot/HibreakProPatchingService/releases/download/20250507/evolution_arm64_bgN-10.5-unofficial-20250507.img.xz"
+        }
+    ]
+}

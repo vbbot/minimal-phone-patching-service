@@ -1,0 +1,3 @@
+# sepolicy/public/file_contexts
+
+/system/bin/a9_eink_server                      u:object_r:phhsu_exec:s0

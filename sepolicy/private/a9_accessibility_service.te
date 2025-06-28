@@ -1,0 +1,18 @@
+# sepolicy/private/a9_accessibility_service.te
+
+type a9_accessibility_service, domain;
+app_domain(a9_accessibility_service)
+
+# Allow accessibility service to access system services
+allow a9_accessibility_service app_api_service:service_manager find;
+allow a9_accessibility_service accessibility_service:service_manager find;
+
+# Allow the accessibility service to manage system settings
+allow a9_accessibility_service system_app_data_file:dir create_dir_perms;
+allow a9_accessibility_service system_app_data_file:file create_file_perms;
+
+# Allow access to system properties
+set_prop(a9_accessibility_service, system_prop)
+
+# Access to overlay display
+allow a9_accessibility_service surfaceflinger_service:service_manager find;

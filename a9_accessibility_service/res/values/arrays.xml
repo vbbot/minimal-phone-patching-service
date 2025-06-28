@@ -1,0 +1,150 @@
+<resources>
+    <string-array name="refresh_options">
+        <item>Clear</item>
+        <item>Balanced</item>
+        <item>Smooth</item>
+        <item>Speed</item>
+    </string-array>
+    <string-array name="refresh_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="color_type_options">
+        <item>TONAL_SPOT</item>
+        <item>VIBRANT</item>
+        <item>RAINBOW</item>
+        <item>EXPRESSIVE</item>
+        <item>FRUIT_SALAD</item>
+        <item>SPRITZ (RECOMMENDED)</item>
+    </string-array>
+    <string-array name="color_type_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="static_lockscreen_options">
+        <item>Large Moon</item>
+        <item>Small Moon</item>
+        <item>Large Pause</item>
+        <item>Small Pause</item>
+    </string-array>
+    <string-array name="static_lockscreen_values">
+        <item>0</item>
+        <item>24</item>
+        <item>48</item>
+        <item>72</item>
+    </string-array>
+    <string-array name="static_lockscreen_opacity_options">
+        <item>Opaque</item>
+        <item>Semi-Transparent</item>
+        <item>Transparent</item>
+    </string-array>
+    <string-array name="static_lockscreen_opacity_values">
+        <item>0</item>
+        <item>8</item>
+        <item>16</item>
+    </string-array>
+    <string-array name="static_lockscreen_bg_opacity_options">
+        <item>Opaque</item>
+        <item>Semi-Opaque</item>
+        <item>Semi-Transparent</item>
+        <item>Transparent</item>
+    </string-array>
+    <string-array name="static_lockscreen_bg_opacity_values">
+        <item>0</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="static_lockscreen_color_options">
+        <item>Black Logo on White Background</item>
+        <item>White Logo on Black Background</item>
+    </string-array>
+    <string-array name="static_lockscreen_color_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="max_brightness_tiers">
+        <item>100</item>
+        <item>250</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1500</item>
+        <item>1750</item>
+        <item>2000 (Default)</item>
+        <item>2200</item>
+    </string-array>
+    <string-array name="max_brightness_tiers_values">
+        <item>100</item>
+        <item>250</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+        <item>1250</item>
+        <item>1500</item>
+        <item>1750</item>
+        <item>2000</item>
+        <item>2200</item>
+    </string-array>
+    <string-array name="button_action_entries">
+        <item>Clear Screen</item>
+        <item>Previous Track</item>
+        <item>Next Track</item>
+        <item>Toggle Music</item>
+        <item>Go Back</item>
+        <item>Home</item>
+        <item>Recent Apps</item>
+        <item>Open Menu</item>
+        <item>Toggle Night Light</item>
+        <item>Toggle Backlight</item>
+        <item>Nothing</item>
+    </string-array>
+    <string-array name="button_action_values">
+        <item>clear</item>
+        <item>previous_track</item>
+        <item>next_track</item>
+        <item>toggle_music</item>
+        <item>back</item>
+        <item>home</item>
+        <item>recents</item>
+        <item>open_menu</item>
+        <item>toggle_night_light</item>
+        <item>toggle_backlight</item>
+        <item>dummy</item>
+    </string-array>
+    <string-array name="button_action_entries_screen_off">
+        <item>Clear Screen</item>
+        <item>Previous Track</item>
+        <item>Next Track</item>
+        <item>Toggle Music</item>
+        <item>Nothing</item>
+    </string-array>
+    <string-array name="button_action_values_screen_off">
+        <item>clear</item>
+        <item>previous_track</item>
+        <item>next_track</item>
+        <item>toggle_music</item>
+        <item>dummy</item>
+    </string-array>
+    <string-array name="mv_timeout_options">
+        <item>Never</item>
+        <item>Instant</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="mv_timeout_values">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+    </string-array>
+</resources>
