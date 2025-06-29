@@ -17,6 +17,8 @@ Default E-ink features Usage:
 
 These mappings can be easily changed in the E-Ink Settings app
 
+Also, the default refresh mode can be changed in the e-ink settings app. The ideal mode is balanced. The other modes might make some elements invisible.
+
 ## Keyboard
 To make sure the keyboard works correctly, download the FinQwerty build from [here](https://github.com/vbbot/finqwerty/releases/tag/mp01-20250629) and follow the instructions mentioned in the release.
 
