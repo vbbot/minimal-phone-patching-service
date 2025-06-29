@@ -20,13 +20,11 @@ class FloatingMenuViewAccessor(val root: View) {
     val button2: Button = root.findViewById(R.id.button2)
     val button3: Button = root.findViewById(R.id.button3)
     val button4: Button = root.findViewById(R.id.button4)
-    
-    val autoRefresh: Switch = root.findViewById(R.id.auto_refresh)
-    val antiShake: Switch = root.findViewById(R.id.anti_shake)
-    
+        
     val settingsIcon: View = root.findViewById(R.id.settings_icon)
     val lightSeekbar: SeekBar = root.findViewById(R.id.light_seekbar)
     val lightWarmSeekbar: SeekBar = root.findViewById(R.id.light_warm_seekbar)
+    val lightKeyboardSeekbar: SeekBar = root.findViewById(R.id.light_keyboard_seekbar)
     
     companion object {
         fun inflate(inflater: LayoutInflater): FloatingMenuViewAccessor {

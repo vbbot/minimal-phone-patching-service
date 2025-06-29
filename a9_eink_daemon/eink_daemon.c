@@ -91,6 +91,16 @@ void applyThemeCustomization(int theme_style_index, const char* hex_color) {
 
 
 void epdForceClear() {
+    const char* filePath = "/sys/devices/platform/soc/11f00000.i2c/i2c-7/7-004b/eink_cpld_registers";
+    int fd = open(filePath, O_WRONLY);
+    if (fd == -1) {
+        LOGE("Error writing to %s: %s\n", filePath, strerror(errno));
+        return;
+    }
+    if (write(fd, "5", strlen("5")) == -1) {
+        LOGE("Error writing to %s: %s\n", filePath, strerror(errno));
+    }
+    close(fd);
 }
 
 
@@ -108,7 +118,7 @@ void epdCommitBitmap() {
 }
 
 void writeToEpdDisplayMode(const char* value) {
-    const char* filePath = "/sys/kernel/debug/eink_debug/global_mode";
+    const char* filePath = "/sys/devices/platform/soc/11f00000.i2c/i2c-7/7-004b/eink_cpld_registers";
     if(!valid_number(value)){
         LOGE("Error writing to %s: Invalid Number\n", filePath);
         return;
@@ -126,7 +136,7 @@ void writeToEpdDisplayMode(const char* value) {
 }
 
 void setColdBacklight(const char* brightness) {
-    const char* coldBacklightPath = "/sys/devices/platform/11d01000.i2c7/i2c-7/7-0036/lm3630a_cold_light";
+    const char* coldBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
     if(!valid_number(brightness)){
         LOGE("Error writing to %s: Invalid Brightness Value\n", coldBacklightPath);
         return;
@@ -143,7 +153,7 @@ void setColdBacklight(const char* brightness) {
 }
 
 void setWarmBacklight(const char* brightness) {
-    const char* warmBacklightPath = "/sys/devices/platform/11d01000.i2c7/i2c-7/7-0036/lm3630a_warm_light";
+    const char* warmBacklightPath = "/sys/class/leds/led-warmlight/brightness";
     if(!valid_number(brightness)){
         LOGE("Error writing to %s: Invalid Brightness Value\n", warmBacklightPath);
         return;
@@ -155,6 +165,23 @@ void setWarmBacklight(const char* brightness) {
     }
     if (write(fd, brightness, strlen(brightness)) == -1) {
         LOGE("Error writing to %s: %s\n", warmBacklightPath, strerror(errno));
+    }
+    close(fd);
+}
+
+void setKbBacklight(const char* brightness) {
+    const char* kbBacklightPath = "/sys/class/leds/keyboard-backlight/brightness";
+    if(!valid_number(brightness)){
+        LOGE("Error writing to %s: Invalid Brightness Value\n", kbBacklightPath);
+        return;
+    }
+    int fd = open(kbBacklightPath, O_WRONLY);
+    if (fd == -1) {
+        LOGE("Error writing to %s: %s\n", kbBacklightPath, strerror(errno));
+        return;
+    }
+    if (write(fd, brightness, strlen(brightness)) == -1) {
+        LOGE("Error writing to %s: %s\n", kbBacklightPath, strerror(errno));
     }
     close(fd);
 }
@@ -302,13 +329,13 @@ void processCommand(const char* command) {
     } else if (strcmp(command, "r") == 0) {
         epdForceClear();
     } else if (strcmp(command, "c") == 0) {
-        writeToEpdDisplayMode("180");
+        writeToEpdDisplayMode("2");
     } else if (strcmp(command, "b") == 0) {
-        writeToEpdDisplayMode("178");
+        writeToEpdDisplayMode("1");
     } else if (strcmp(command, "s") == 0) {
-        writeToEpdDisplayMode("177");
+        writeToEpdDisplayMode("3");
     } else if (strcmp(command, "p") == 0) {
-        writeToEpdDisplayMode("179");
+        writeToEpdDisplayMode("4");
     } else if (strncmp(command, "stw", 3) == 0) {
         if(valid_number(command+3))
             setWhiteThreshold(command+3);
@@ -341,6 +368,9 @@ void processCommand(const char* command) {
     } else if (strncmp(command, "br_wm", 5) == 0) {
         if(valid_number(command+5))
             setWarmBacklight(command+5);
+    } else if (strncmp(command, "br_kb", 5) == 0) {
+        if(valid_number(command+5))
+            setKbBacklight(command+5);
     } else if (strncmp(command, "au_br", 5) == 0) {
         if(valid_number(command+5))
             setGlobalAutoRefresh(command+5);

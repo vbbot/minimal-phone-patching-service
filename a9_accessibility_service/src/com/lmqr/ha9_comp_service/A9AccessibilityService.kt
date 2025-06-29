@@ -46,7 +46,6 @@ class A9AccessibilityService : AccessibilityService(),
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var buttonActionManager: ButtonActionManager
     private lateinit var brightnessManager: BrightnessManager
-    private lateinit var displaySettingsManager: DisplaySettingsManager
 
     private var isScreenOn = true
 
@@ -114,7 +113,6 @@ class A9AccessibilityService : AccessibilityService(),
         )
         buttonActionManager = ButtonActionManager(commandRunner, refreshModeManager)
         brightnessManager = BrightnessManager(sharedPreferences, commandRunner)
-        displaySettingsManager = DisplaySettingsManager(sharedPreferences, commandRunner)
 
         val filterScreen = IntentFilter()
         filterScreen.addAction(Intent.ACTION_SCREEN_ON)
@@ -185,19 +183,12 @@ class A9AccessibilityService : AccessibilityService(),
     )
 
     override fun onKeyEvent(event: KeyEvent): Boolean {
-        if(event.scanCode == 59){
+        if(event.scanCode == 252){
             if (!Settings.canDrawOverlays(baseContext))
                     requestOverlayPermission()
             else
                 hardwareGestureDetector.onKeyEvent(event.action, event.eventTime)
         }
-        if(event.scanCode == 60){
-            if (!Settings.canDrawOverlays(baseContext))
-                    requestOverlayPermission()
-            else
-                hardwareGestureDetectorTop.onKeyEvent(event.action, event.eventTime)
-        }
-
         return super.onKeyEvent(event)
     }
 
@@ -294,7 +285,6 @@ class A9AccessibilityService : AccessibilityService(),
                         updateButtons(refreshModeManager.currentMode)
                     }
 
-                    displaySettingsManager.setupSwitches(autoRefresh, antiShake)
 
 
                     settingsIcon.setOnClickListener {
@@ -308,7 +298,7 @@ class A9AccessibilityService : AccessibilityService(),
                     }
 
 
-                    brightnessManager.setupSeekBars(lightSeekbar, lightWarmSeekbar)
+                    brightnessManager.setupSeekBars(lightSeekbar, lightWarmSeekbar, lightKeyboardSeekbar)
                     updateButtons(refreshModeManager.currentMode)
 
                     wm.addView(root, layoutParams)
@@ -339,8 +329,6 @@ class A9AccessibilityService : AccessibilityService(),
                 Log.d("A9Service", "Applied brightness: cold=${brightnessManager.coldBrightness}, warm=${brightnessManager.warmBrightness}")
                 
                 handler.postDelayed({
-                    displaySettingsManager.applySettings()
-                    Log.d("A9Service", "Applied display settings: autoRefresh=${displaySettingsManager.isAutoRefreshEnabled}, antiShake=${displaySettingsManager.isAntiShakeEnabled}")
                     updateColorScheme(sharedPreferences)
                     Log.d("A9Service", "Applied remaining settings")
                 }, 500)

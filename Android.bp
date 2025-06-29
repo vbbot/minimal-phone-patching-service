@@ -1,5 +1,6 @@
 subdirs = [
     "a9_accessibility_service",
     "a9_eink_daemon",
+    "mp_keyboard",
     "sepolicy",
 ]
