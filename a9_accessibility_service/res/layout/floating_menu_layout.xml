@@ -151,7 +151,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/baseline_brightness_high_24_dark" />
+                android:src="@drawable/baseline_brightness_keyboard_24" />
 
             <SeekBar
                 android:id="@+id/light_keyboard_seekbar"
